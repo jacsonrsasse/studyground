@@ -7,23 +7,17 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { AllowedSheetTypesPipe } from './pipes/allowed-sheet-types.pipe';
-import { diskStorage } from 'multer';
-import { join } from 'path';
+import { ImportBooksFromFileUseCase } from './use-cases/import-books-from-file/import-books-from-file.usecase';
 
 @Controller('/books')
 export class BooksController {
+  constructor(
+    private readonly importBooksFromFileUseCase: ImportBooksFromFileUseCase,
+  ) {}
+
   @Post('/import')
-  @UseInterceptors(
-    FileInterceptor('file', {
-      storage: diskStorage({
-        destination: join(__dirname, '..', '..', '.temp'),
-        filename(req, file, callback) {
-          callback(null, Date.now() + '-' + file.originalname);
-        },
-      }),
-    }),
-  )
-  importBooks(
+  @UseInterceptors(FileInterceptor('file'))
+  async importBooks(
     @UploadedFile(
       new ParseFilePipe({
         validators: [new AllowedSheetTypesPipe()],
@@ -31,10 +25,10 @@ export class BooksController {
     )
     file: Express.Multer.File,
   ) {
-    // precisa salvar o arquivo localmente no projeto em uma pasta temp
-    // emitir um evento, acho que CQRS encaixa aqui, ou pode ser com fila usando Bull
-    // o handler do evento deverá ler o arquivo em stream e inserir os registros no banco
-    // ao finalizar, apagar o arquivo temporário
-    return { message: 'Arquivo enviado com sucesso!', file };
+    await this.importBooksFromFileUseCase.execute(file);
+    return {
+      message: 'Arquivo enviado com sucesso!',
+      filename: file.originalname,
+    };
   }
 }
