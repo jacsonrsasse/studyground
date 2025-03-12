@@ -16,7 +16,7 @@ export class BooksController {
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
-        destination: join(__dirname, '..', '..', 'temp'),
+        destination: join(__dirname, '..', '..', '.temp'),
         filename(req, file, callback) {
           callback(null, Date.now() + '-' + file.originalname);
         },
