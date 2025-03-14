@@ -1,6 +1,6 @@
 import { FileValidator, Injectable } from '@nestjs/common';
 import { IFile } from '@nestjs/common/pipes/file/interfaces';
-import { ALLOWED_SHEET_TYPES } from '../constants/allowed-sheet-types';
+import { ALLOWED_SHEET_TYPES } from '../constants';
 
 @Injectable()
 export class AllowedSheetTypesPipe extends FileValidator<
