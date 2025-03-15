@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
-import { SseModule } from 'src/sse/sse.module';
+import { SseModule } from 'src/libs/sse/sse.module';
 
 import { BooksResolver } from './books.resolver';
 import { BooksController } from './books.controller';

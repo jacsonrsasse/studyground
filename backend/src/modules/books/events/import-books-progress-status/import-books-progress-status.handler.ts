@@ -1,6 +1,6 @@
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
 import { ImportBooksProgressStatusEvent } from './import-books-progress-status.event';
-import { SseService } from 'src/sse/sse.service';
+import { SseService } from 'src/libs/sse/sse.service';
 
 @EventsHandler(ImportBooksProgressStatusEvent)
 export class ImportBooksProgressStatusHandler

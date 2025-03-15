@@ -3,8 +3,8 @@ import { EventBus } from '@nestjs/cqrs';
 import { existsSync } from 'fs';
 import { writeFile, mkdir } from 'fs/promises';
 import { join } from 'path';
-import { StartImportBooksFromFileEvent } from 'src/books/events/start-import-books-from-file/start-import-books-from-file.event';
-import { EnvService } from 'src/env/env.service';
+import { EnvService } from '@libs/env/env.service';
+import { StartImportBooksFromFileEvent } from '@modules/books/events/start-import-books-from-file/start-import-books-from-file.event';
 
 @Injectable()
 export class ImportBooksFromFileUseCase {

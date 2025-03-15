@@ -1,6 +1,6 @@
 import { EventBus, EventsHandler, IEventHandler } from '@nestjs/cqrs';
 import { StartImportBooksFromFileEvent } from './start-import-books-from-file.event';
-import { EnvService } from 'src/env/env.service';
+import { EnvService } from 'src/libs/env/env.service';
 import { join } from 'path';
 import * as ExcelJs from 'exceljs';
 import { ImportBooksProgressStatusEvent } from '../import-books-progress-status/import-books-progress-status.event';

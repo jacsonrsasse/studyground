@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { EnvModule } from './env/env.module';
-import { BooksModule } from './books/books.module';
+import { EnvModule } from './libs/env/env.module';
+import { BooksModule } from './modules/books/books.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 

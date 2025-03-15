@@ -9,7 +9,7 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { AllowedSheetTypesPipe } from './pipes/allowed-sheet-types.pipe';
 import { ImportBooksFromFileUseCase } from './use-cases/import-books-from-file/import-books-from-file.usecase';
-import { SseService } from '../sse/sse.service';
+import { SseService } from '@libs/sse/sse.service';
 
 @Controller('/books')
 export class BooksController {
