@@ -3,6 +3,7 @@ import { EnvModule } from './libs/env/env.module';
 import { BooksModule } from './modules/books/books.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { MakeMockModule } from '@modules/make-mock/make-mock.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
       playground: false,
     }),
     BooksModule,
+    MakeMockModule,
   ],
   controllers: [],
   providers: [],
