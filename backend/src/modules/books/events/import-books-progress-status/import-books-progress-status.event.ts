@@ -1,6 +1,6 @@
 export class ImportBooksProgressStatusEvent {
   constructor(
-    public totalRows: number,
-    public currentRow: number,
+    public fileSize: number,
+    public processedBytes: number,
   ) {}
 }

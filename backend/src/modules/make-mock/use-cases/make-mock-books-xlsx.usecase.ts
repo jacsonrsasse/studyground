@@ -11,7 +11,7 @@ export class MakeMockBooksXlsxUseCase {
     const worksheet = workbook.addWorksheet();
     worksheet.addRow(['name', 'author', 'pages']).commit();
 
-    for (let i = 0; i <= 2_000_000; i++) {
+    for (let i = 0; i <= 1_000; i++) {
       worksheet
         .addRow([`Book ${i}`, `Author ${i}`, Math.floor(Math.random() * 1000)])
         .commit();
